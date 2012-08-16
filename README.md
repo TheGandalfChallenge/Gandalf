@@ -21,4 +21,8 @@ Starting with a number one buzz cut and a clean-shaven face, players will avoid 
 - Rob Earlam [@RobEarlam](http://twitter.com/robearlam)
 - Victor Nguyen [@victornguyen](http://twitter.com/victornguyen)
 
+
+## Tech
+As an exercise in learning functional programing this websites back end will be built in Clojure
+
 [Temp Website](http://limitless-forest-4975.herokuapp.com/)
