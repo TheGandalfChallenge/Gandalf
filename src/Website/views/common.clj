@@ -1,15 +1,39 @@
 (ns Website.views.common
-  (:use [noir.core :only [defpartial]]
-        [hiccup.page :only [include-css html5]]))
+  (:use [noir.core]
+        [hiccup.page]))
 
+;; Links and includes
+(def main-links[{:url "/idea/" :text "The Idea":class ""}
+                  {:url "/players/" :text "The Players":class ""}
+                  {:url "/rules/" :text "The Rules":class ""}
+                  {:url "/badgeofhonor/" :text "The Badge of Honor" :class ""}
+                  {:url "/donate/" :text "Donate" :class "donate"}])
+
+(def includes {:style (include-css "/css/style.css")
+               :modernizr.js (include-js "/js/libs/modernizr-2.5.3.min.js")
+               :jquery.js (include-js "//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")})
+
+(defpartial build-head [incls]
+            [:head
+             [:title "The Gandalf Challenge"]
+             [:meta {:name "description" :content ""}]
+             [:meta {:name "author" :content ""}]
+             [:meta {:name "viewport" :content "width=device-width"}]
+             (map #(get includes %) incls)])
+
+(defpartial build-foot [incls]
+  [ 
+    (map #(get includes %) incls)
+    ;;[:script "window.jQuery || document.write('<script src=\"js/libs/jquery-1.7.2.min.js\"><\\/script>')"]
+  ])
 
 (defpartial site-layout [& content]
   (html5
-    [:head
-      [:title "The Gandalf Challenge"]]
+    (build-head [:style :modernizr.js])
     [:body
       [:div#wrapper
-        content]]))
+        content 
+        ]]))
 
 
 (defpartial player [{:keys [player-name twitter-name]}]
