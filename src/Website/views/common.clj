@@ -3,11 +3,16 @@
         [hiccup.page]))
 
 ;; Links and includes
-(def main-links[{:url "/idea/" :text "The Idea":class ""}
-                  {:url "/players/" :text "The Players":class ""}
-                  {:url "/rules/" :text "The Rules":class ""}
-                  {:url "/badgeofhonor/" :text "The Badge of Honor" :class ""}
-                  {:url "/donate/" :text "Donate" :class "donate"}])
+(def main-links[{:url "/idea/" :text "The Idea"}
+                  {:url "/players/" :text "The Players"}
+                  {:url "/rules/" :text "The Rules"}
+                  {:url "/badgeofhonor/" :text "The Badge of Honor"}
+                  {:url "/donate/" :text "Donate"}])
+
+(defpartial link-item [{:keys [url text]}]
+            [:li
+            ([:a {:href url} text])])
+
 
 (def includes {:style (include-css "/css/style.css")
                :modernizr.js (include-js "/js/libs/modernizr-2.5.3.min.js")
@@ -22,25 +27,27 @@
              (map #(get includes %) incls)])
 
 (defpartial build-foot [incls]
-  [ 
     (map #(get includes %) incls)
-    ;;[:script "window.jQuery || document.write('<script src=\"js/libs/jquery-1.7.2.min.js\"><\\/script>')"]
-  ])
+    [:script "window.jQuery || document.write('<script src=\"js/libs/jquery-1.7.2.min.js\"><\\/script>')"]
+  )
 
 (defpartial site-layout [& content]
   (html5
     (build-head [:style :modernizr.js])
     [:body
       [:div#wrapper
-        content 
-        ]]))
+      [:div.bar
+      [:ul.nav
+        (map link-item main-links)]]
+        content]
+      (build-foot [:jquery.js])]))
 
 
-(defpartial player [{:keys [player-name twitter-name]}]
-    [:li player-name " "
-    	[:a {:href (str "http://twitter.com/" twitter-name)} "@" twitter-name]
-    ])
+; (defpartial player [{:keys [player-name twitter-name]}]
+;     [:li player-name " "
+;     	[:a {:href (str "http://twitter.com/" twitter-name)} "@" twitter-name]
+;     ])
 
-(defpartial players [items]
-    [:ul#playerItems ;; set the id attribute
-        (map player items)])
+; (defpartial players [items]
+;     [:ul#playerItems ;; set the id attribute
+;         (map player items)])
