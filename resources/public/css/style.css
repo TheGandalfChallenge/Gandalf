@@ -121,13 +121,16 @@ h2 { font:normal 30px 'zitzregular'; }
 .photo { left:50px; top:30px; }
 
 .players ul { margin:0; padding:0; }
-.player { float:left; padding-bottom:40px; text-align:center; }
+.player { position:relative; float:left; padding-bottom:40px; text-align:center; }
 .player p { margin:0; }
 .player a { color:#a6a6a6; text-decoration:none; }
 .player-frame { background-repeat:no-repeat; width:217px; height:300px; }
-.player-frame img { margin:41px 32px; width:153px; height:218px; }
+.player-frame img { margin:41px 32px; width:153px; height:218px; opacity:0.3; -webkit-transition:all 0.5s ease-out; }
 .frame1 { background-image:url('../img/frame1.png'); }
 .frame2 { background-image:url('../img/frame2.png'); }
 .frame3 { background-image:url('../img/frame3.png'); }
 .frame4 { background-image:url('../img/frame4.png'); }
 .frame5 { background-image:url('../img/frame5.png'); }
+
+.progress { position:absolute; top:56px; left:47px; width:123px; height:10px; background:#303038; border-radius:8px; border:3px solid #303038; }
+.progress i { display:block; width:0; height:10px; background:#a6a6a6; border-radius:6px; -webkit-transition:all 0.2s ease-out; }

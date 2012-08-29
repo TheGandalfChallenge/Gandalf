@@ -6,7 +6,7 @@
 	 * TEMPORARY SOLUTION, YEAH MAN!
 	 * @type {Number}
 	 */
-	var DAY_NUMBER = 15;
+	var DAY_NUMBER = 8;
 
 	/**
 	 * Path to photo images
@@ -57,14 +57,53 @@
 		return PHOTO_PATH.replace(/{day}/, day).replace(/{name}/, name);
 	};
 
+	var updateProgressHandler = function(e, loader) {
+		var name 		= loader.id,
+			progress 	= loader.getProgress();
+
+		console.log('Preloader:progress', name+':', progress);
+
+		var $player = $( '#' + name ).parents('.player');
+
+		if ( !$player.find('.progress').length ) {
+			$player.append('<div class="progress"><i></i></div>');
+		}
+
+		$player.find('.progress i').width(function(i, w){
+			return $(this).parents('.progress').width() * progress;
+		});
+	};
+
+	var loadCompleteHandler = function(e, loader) {
+		console.log('Preloader:complete', 'finished loading!! id:', loader.id, $('#' + loader.id));
+		initPlayer( loader.id, loader.images );
+	};
+
+	var initPlayer = function(name, images) {
+		console.log('initialising player:', name);
+		$( '#' + name )
+			.iskip({
+				images: images,
+				method: 'mousemove'
+			})
+			.css('opacity', 1)
+			.parents('.player')
+				.find('.progress').fadeOut(500);
+	};
+
 	/**
-	 * Init iSkip for each player
+	 * Bind listeners for Preloader events
+	 */
+	$(window).on({
+		'Preloader:progress': updateProgressHandler,
+		'Preloader:complete': loadCompleteHandler
+	});
+
+	/**
+	 * Go time: preload images for each player
 	 */
 	_.each(players, function(name){
-		$( '#' + name ).iskip({
-			images: getPhotoArray(name),
-			method: 'mousemove'
-		});
+		new IGLOO.Preloader( name, getPhotoArray(name) );
 	});
 
 }(jQuery));
