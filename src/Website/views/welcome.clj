@@ -15,9 +15,9 @@
 
 (defpage "/" []
 		  (common/site-layout
-		  	[:div.hero.centered
+		  	[:div.hero.centered.cf
 		  	  [:div.photos
-		  	    [:image.photo {:src "/photos/aaron/008.jpg" :width "400" :height "400"}]
+		  	    [:image.photo {:src "/photos/pete/014.jpg" :width "400" :height "400"}]
 		  	    [:image.frame {:src "/img/hero-frame.png"}]]
 		  	    [:h1.ir "The Gandalf Challenge"]
 		  	    [:div.intro

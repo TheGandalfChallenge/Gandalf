@@ -116,9 +116,9 @@ h2 { font:normal 30px 'zitzregular'; }
 
 .intro { margin:0 0 0 102px; width:360px; }
 
-.photos { position:relative; float:right; width:517px; height:474px; }
-.photos img { position: absolute; }
-.photo { left:50px; top:30px; }
+.photos { position:relative; float:right; width:410px; height:544px; margin:30px 60px 0 0; }
+.photos img { position:absolute; }
+.photo { left:75px; top:73px; width:260px; height:371px; }
 
 .players ul { margin:0; padding:0; }
 .player { position:relative; float:left; padding-bottom:40px; text-align:center; list-style-type:none; }

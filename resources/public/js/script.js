@@ -6,7 +6,7 @@
 	 * TEMPORARY SOLUTION, YEAH MAN!
 	 * @type {Number}
 	 */
-	var DAY_NUMBER = 8;
+	var DAY_NUMBER = 14;
 
 	/**
 	 * Path to photo images
