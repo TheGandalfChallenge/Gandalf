@@ -126,6 +126,7 @@ h2 { font:normal 30px 'zitzregular'; }
 .player a { color:#a6a6a6; text-decoration:none; text-transform:none; }
 .player-frame { background-repeat:no-repeat; width:217px; height:300px; }
 .player-frame img { margin:41px 32px; width:153px; height:218px; opacity:0.3; -webkit-transition:all 0.5s ease-out; }
+.player-frame img.loaded { cursor:ew-resize; }
 .frame1 { background-image:url('../img/frame1.png'); }
 .frame2 { background-image:url('../img/frame2.png'); }
 .frame3 { background-image:url('../img/frame3.png'); }

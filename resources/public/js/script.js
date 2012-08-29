@@ -87,6 +87,7 @@
 				method: 'mousemove'
 			})
 			.css('opacity', 1)
+			.addClass('loaded')
 			.parents('.player')
 				.find('.progress').fadeOut(500);
 	};
