@@ -16,7 +16,9 @@
 
 (def includes {:style (include-css "/css/style.css")
                :modernizr.js (include-js "/js/libs/modernizr-2.5.3.min.js")
-               :jquery.js (include-js "//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")})
+               :jquery.js (include-js "//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")
+               :iskip.js (include-js "/js/libs/jquery.iskip.js")
+               :script.js (include-js "/js/script.js")})
 
 (defpartial build-head [incls]
             [:head
@@ -38,4 +40,4 @@
                 [:ul.centered.cf
                   (map link-item main-links)]]
                   content
-                (build-foot [:jquery.js])]))
+                (build-foot [:jquery.js :iskip.js :script.js])]))

@@ -125,7 +125,7 @@ h2 { font:normal 30px 'zitzregular'; }
 .player p { margin:0; }
 .player a { color:#a6a6a6; text-decoration:none; }
 .player-frame { background-repeat:no-repeat; width:217px; height:300px; }
-.player-frame img { margin:41px 32px; }
+.player-frame img { margin:41px 32px; width:153px; height:218px; }
 .frame1 { background-image:url('../img/frame1.png'); }
 .frame2 { background-image:url('../img/frame2.png'); }
 .frame3 { background-image:url('../img/frame3.png'); }

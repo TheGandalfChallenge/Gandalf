@@ -9,7 +9,7 @@
 (defpartial player [idx {:keys [image player-name twitter-name]}]
 			 [:li.player
 			   [:div {:class (str "player-frame frame" (+ 1 idx))}
-			     [:image {:src image}]]
+			     [:image {:src image :id player-name}]]
 			   [:p 
 			     player-name " " [:a {:href (str "http://twitter.com/" twitter-name)} "@" twitter-name]]])
 
