@@ -40,4 +40,4 @@
                   [:li "$50 each to enter"]
                   [:li "No hair removal of any kind"]
                   [:li "Use of grooming products, such as the Gentlmen's Stiffener, accepted"]
-                  [:li "Last man standing to win the kitty"]]]])))
+                  [:li "Last man standing to win the kitty"]]]]))
