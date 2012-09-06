@@ -1,7 +1,7 @@
-(ns Website.views.welcome
-  (:require [Website.views.common :as common]
-            [Website.views.carousel :as carousel]
-            [Website.models.player :as players])
+(ns Gandalf.views.team
+  (:require [Gandalf.views.common :as common]
+            [Gandalf.views.carousel :as carousel]
+            [Gandalf.models.player :as players])
    (:use 
     [noir.core]
     [hiccup.page]

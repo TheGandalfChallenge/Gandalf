@@ -1,6 +1,6 @@
-(ns Website.models
+(ns Gandalf.models
 	(:require [simpledb.core :as db]
-            [Website.models.player :as players]))
+            [Gandalf.models.player :as players]))
 
 (defn initialize []
   (db/init)

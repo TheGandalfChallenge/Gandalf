@@ -1,4 +1,4 @@
-(ns Website.views.carousel
+(ns Gandalf.views.carousel
   (:use [noir.core]
         [hiccup.page]
         [hiccup.element]))

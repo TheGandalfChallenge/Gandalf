@@ -1,4 +1,4 @@
-(ns Website.views.common
+(ns Gandalf.views.common
   (:use [noir.core]
         [hiccup.page]
         [hiccup.element]))
@@ -6,7 +6,7 @@
 (def main-links[{:url "#idea" :text "The Idea"}
                 {:url "#players" :text "The Players"}
                 {:url "#rules" :text "The Rules"}
-                {:url "#badgeofhonor" :text "The Badge of Honor"}
+                ;{:url "#badgeofhonor" :text "The Badge of Honor"}
                 {:url "http://vic.cancercouncilfundraising.org.au/thegandalfchallenge" :text "Donate" :cls "donate"}])
 
 (defpartial link-item [{:keys [url cls text]}]
@@ -20,6 +20,7 @@
                :underscore.js (include-js "/js/libs/underscore.js")
                :iskip.js (include-js "/js/libs/jquery.iskip.js")
                :preloader.js (include-js "/js/libs/igloo.preloader.js")
+               :plugins.js (include-js "/js/plugins.js")
                :script.js (include-js "/js/script.js")})
 
 (defpartial build-head [incls]
@@ -32,7 +33,7 @@
 
 (defpartial build-foot [incls]
             (map includes incls)
-            [:script "window.jQuery || document.write('<script src=\"js/libs/jquery-1.7.2.min.js\"><\\/script>')"])
+            [:script "window.jQuery || document.write('<script src=\"/js/libs/jquery-1.7.2.min.js\"><\\/script>')"])
 
 (defpartial site-layout [& content]
             (html5
@@ -42,4 +43,4 @@
                 [:ul.centered.cf
                   (map link-item main-links)]]
                   content
-                (build-foot [:jquery.js :underscore.js :iskip.js :preloader.js :script.js])]))
+                (build-foot [:jquery.js :underscore.js :iskip.js :preloader.js :plugins.js :script.js])]))

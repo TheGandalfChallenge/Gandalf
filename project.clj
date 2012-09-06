@@ -4,4 +4,4 @@
                            [noir "1.3.0-beta3"]
                            [org.markdownj/markdownj "0.3.0-1.0.2b4"]
                            [simpledb "0.1.4"]]
-            :main Website.server)
+            :main Gandalf.server)

@@ -1,4 +1,4 @@
-(ns Website.models.player
+(ns Gandalf.models.player
 	(:require [simpledb.core :as db]))
 
 ;; Gets
