@@ -9,11 +9,6 @@
                 ;{:url "#badgeofhonor" :text "The Badge of Honor"}
                 {:url "http://vic.cancercouncilfundraising.org.au/thegandalfchallenge" :text "Donate" :cls "donate"}])
 
-(defpartial link-item [{:keys [url cls text]}]
-            [:li {:class cls}
-             (link-to url text)])
-
-
 (def includes {:style (include-css "/css/style.css")
                :modernizr.js (include-js "/js/libs/modernizr-2.5.3.min.js")
                :jquery.js (include-js "//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")
@@ -22,6 +17,10 @@
                :preloader.js (include-js "/js/libs/igloo.preloader.js")
                :plugins.js (include-js "/js/plugins.js")
                :script.js (include-js "/js/script.js")})
+
+(defpartial link-item [{:keys [url cls text]}]
+            [:li {:class cls}
+             (link-to url text)])
 
 (defpartial build-head [incls]
             [:head
