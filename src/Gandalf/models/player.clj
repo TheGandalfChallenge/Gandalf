@@ -1,22 +1,14 @@
 (ns Gandalf.models.player
-	(:require [simpledb.core :as db]))
+	(:require [clojurewerkz.neocons.rest :as nr]
+    		  	[clojurewerkz.neocons.rest.nodes :as nn]))
 
-;; Gets
-
-;; Gets the players from the database
-(defn all []
-  (vals (db/get :players)))
-
-
-;; Operations
-(defn- store! [{image :image playername :player-name  twittername :twitter-name :as player}]
-  (db/update! :players assoc playername player))
+ (defn create-player-data [player]
+ 	(let [player-name (:player-name player)
+ 		    image (:image player)
+	    	twitter-name (:twitter-name player)]
+ 				{:player-name player-name :image image :twitter-name twitter-name}))
 
 
-(defn init! []
-    (db/put! :players {})
-    (store! {:image "/photos/jay/001.jpg" :player-name "jay" :twitter-name "jaypet"})
-    (store! {:image "/photos/aaron/001.jpg" :player-name "aaron" :twitter-name "Gravypower"})
-    (store! {:image "/photos/rob/001.jpg" :player-name "rob" :twitter-name "RobEarlam"})
-    (store! {:image "/photos/vic/001.jpg" :player-name "vic" :twitter-name "victornguyen"})
-    (store! {:image "/photos/pete/001.jpg" :player-name "pete" :twitter-name "petecostello"}))
+ (defn create-new-player [player]
+ 	(let [player-node (nn/create (create-player-data player))]
+ 		player-node))
