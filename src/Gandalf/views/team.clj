@@ -16,7 +16,7 @@
 (defpartial rules-item [{:keys [rule]}]
   [:li rule])
 
-(defpartial player-item [{:keys [image player-name twitter-name] :as user}]
+(defpartial player-item [{:keys [image player-name twitter-name] :as player}]
              [:li.player
                [:div {:class (str "player-frame frame" (+ 1 (rand-int 3)))}
                  [:image {:src image :id player-name}]]
@@ -24,10 +24,6 @@
                  player-name " " [:a {:href (str "http://twitter.com/" twitter-name)} "@" twitter-name]]])
 
 (defpage "/" []
-          (let [
-          igloo (teams/create-new-team {:image "/photos/jay/001.jpg":twitter-name "igloodigital" :team-name "igloo"})
-          jay (players/create-new-player {:image "/photos/jay/001.jpg" :twitter-name "jaypet" :player-name "jay"})
-          igloo-jay (teams/add-player-to-team igloo jay)])
           (common/site-layout
             [:div.hero.centered.cf
               (carousel/image-carousel)
@@ -41,7 +37,8 @@
             [:div#players.section.centered
               [:h2 "The Players"]
               [:ul.cf
-                ;(map player-item (players/all))
+                (map player-item (:nodes (teams/get-team-members 101)))
+                (:nodes (teams/get-team-members 101))
                 ]]
 
             [:div#rules.section.centered.cf

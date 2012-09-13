@@ -22,6 +22,17 @@
 		(println "**** New team created, node id = " (:id team-node))
 		team-node))
 
-(defn add-player-to-team [team player]
-	(let [rel (nrl/create team player :team-member)]
+(defn add-player-to-team [player team]
+	(let [rel (nrl/create player team :team-member)]
 		rel))
+
+
+(defn get-team-members [team]
+		(nr/connect! "http://localhost:7474/db/data/")
+		(nrl/traverse team 
+			:relationships [{
+				:direction "in" 
+				:type "team-member"}] 
+			:return-filter {
+					:language "builtin" 
+					:name "all_but_start_node"}))
