@@ -17,13 +17,14 @@
   [:li rule])
 
 (defpartial player-item [{:keys [image player-name twitter-name] :as player}]
+  (println player)
              [:li.player
                [:div {:class (str "player-frame frame" (+ 1 (rand-int 3)))}
                  [:image {:src image :id player-name}]]
                [:p 
                  player-name " " [:a {:href (str "http://twitter.com/" twitter-name)} "@" twitter-name]]])
 
-(defpage "/" []
+(defpage "/team/:team" {:keys [team]}
           (common/site-layout
             [:div.hero.centered.cf
               (carousel/image-carousel)
@@ -37,8 +38,8 @@
             [:div#players.section.centered
               [:h2 "The Players"]
               [:ul.cf
-                (map player-item (:nodes (teams/get-team-members 101)))
-                (:nodes (teams/get-team-members 101))
+                (map player-item (teams/get-team-members team))
+                ;(teams/get-team-members 94)
                 ]]
 
             [:div#rules.section.centered.cf

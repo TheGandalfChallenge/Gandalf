@@ -8,6 +8,8 @@
 	    	twitter-name (:twitter-name player)]
  				{:player-name player-name :image image :twitter-name twitter-name}))
 
+(defn create-player-data-from-node [player-node]
+	(create-player-data (:data player-node)))
 
  (defn create-new-player [player]
  	(let [player-node (nn/create (create-player-data player))]
