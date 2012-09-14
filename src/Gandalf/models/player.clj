@@ -2,15 +2,15 @@
 	(:require [clojurewerkz.neocons.rest :as nr]
     		  	[clojurewerkz.neocons.rest.nodes :as nn]))
 
- (defn create-player-data [player]
+;create
+ (defn create-player-data [player-node]
+ 	(let [player(:data player-node)]
  	(let [player-name (:player-name player)
  		    image (:image player)
 	    	twitter-name (:twitter-name player)]
- 				{:player-name player-name :image image :twitter-name twitter-name}))
+ 				{:id (:id player-node) :player-name player-name :image image :twitter-name twitter-name})))
 
-(defn create-player-data-from-node [player-node]
-	(create-player-data (:data player-node)))
-
+;db
  (defn create-new-player [player]
  	(let [player-node (nn/create (create-player-data player))]
  		player-node))

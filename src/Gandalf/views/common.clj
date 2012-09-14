@@ -43,3 +43,14 @@
                   (map link-item main-links)]]
                   content
                 (build-foot [:jquery.js :underscore.js :iskip.js :preloader.js :plugins.js :script.js])]))
+
+
+(defpartial admin-layout [team-name & content]
+            (html5
+              (build-head [:jquery])
+              [:body
+               [:div#wrapper
+                [:div.content
+                 [:div#header
+                  [:h1 (link-to (str "/team/" team-name "/admin") "Admin")]]
+                 content]]]))

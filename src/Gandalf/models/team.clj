@@ -33,9 +33,11 @@
 	;(println team)
 	team))
 
+(defn get-team-member [team player-name]
+	)
+
 (defn get-team-members [team]
 	;(println team)
-		(nr/connect! "http://localhost:7474/db/data/")
 		(let [ team-members (nn/traverse (:id (get-team team))
 												:relationships [{
 													:direction "in" 
@@ -44,4 +46,4 @@
 														:language "builtin" 
 														:name "all_but_start_node"})]
 		(println team-members)
-		(map players/create-player-data-from-node team-members)))
+		(map players/create-player-data team-members)))

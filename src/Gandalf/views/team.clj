@@ -39,7 +39,6 @@
               [:h2 "The Players"]
               [:ul.cf
                 (map player-item (teams/get-team-members team))
-                ;(teams/get-team-members 94)
                 ]]
 
             [:div#rules.section.centered.cf
