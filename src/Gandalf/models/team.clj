@@ -36,6 +36,8 @@
 (defn get-team-member [team player-name])
 
 (defn get-team-members [team]
+	(println team)
+	(println (nn/traverse (:id (get-team team))))
 		(let [ team-members 
 			(nn/traverse (:id (get-team team))
 			:relationships [{

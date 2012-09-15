@@ -13,6 +13,7 @@
 
  (defn create-player-data-from-node [player-node]
  	(let [player (create-player-data (:data player-node))]
+ 		(println player)
 		  {:id (:id player-node) 
 		  :player-name (:player-name player) 
 		  :image (:image player) 
