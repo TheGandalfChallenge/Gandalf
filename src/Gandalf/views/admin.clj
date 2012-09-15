@@ -19,8 +19,7 @@
 			(map player-item (teams/get-team-members team))
 		]))
 
-
 (defpage "/team/:team/admin/edit/:player-name" {:keys [team player-id]}
   (common/admin-layout team
-      (form-to [:post ])
+      ;(form-to [:post ])
     ))

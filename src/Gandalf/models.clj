@@ -7,26 +7,25 @@
 			  	[Gandalf.models.rule :as rules]))
 
 (defn initialize []  
-	(nr/connect! "http://localhost:7474/db/data/")
-		(let [
-		igloo (teams/create-new-team {:image "/photos/jay/001.jpg":twitter-name "igloodigital" :team-name "igloo"})
-		
-		jay (players/create-new-player {:image "/photos/jay/001.jpg" :twitter-name "jaypet" :player-name "jay"})
-		igloo-jay (teams/add-player-to-team jay igloo)
+	(let [
+	igloo (teams/create-new-team {:image "/photos/jay/001.jpg":twitter-name "igloodigital" :team-name "igloo"})
+	
+	jay (players/create-new-player {:image "/photos/jay/001.jpg" :twitter-name "jaypet" :player-name "jay"})
+	igloo-jay (teams/add-player-to-team jay igloo)
 
-		aaron (players/create-new-player {:image "/photos/aaron/001.jpg" :twitter-name "Gravypower" :player-name "aaron"})
-		igloo-aaron (teams/add-player-to-team aaron igloo)
+	aaron (players/create-new-player {:image "/photos/aaron/001.jpg" :twitter-name "Gravypower" :player-name "aaron"})
+	igloo-aaron (teams/add-player-to-team aaron igloo)
 
-		rob (players/create-new-player {:image "/photos/rob/001.jpg":twitter-name "RobEarlam" :player-name "rob"})
-		igloo-jay (teams/add-player-to-team rob igloo)
+	rob (players/create-new-player {:image "/photos/rob/001.jpg":twitter-name "RobEarlam" :player-name "rob"})
+	igloo-jay (teams/add-player-to-team rob igloo)
 
-		vic (players/create-new-player {:image "/photos/vic/001.jpg":twitter-name "victornguyen" :player-name "vic"})
-		igloo-vic (teams/add-player-to-team vic igloo)
+	vic (players/create-new-player {:image "/photos/vic/001.jpg":twitter-name "victornguyen" :player-name "vic"})
+	igloo-vic (teams/add-player-to-team vic igloo)
 
-		pete (players/create-new-player {:image "/photos/pete/001.jpg":twitter-name "petecostello" :player-name "pete"})
-		igloo-pete (teams/add-player-to-team pete igloo)
+	pete (players/create-new-player {:image "/photos/pete/001.jpg":twitter-name "petecostello" :player-name "pete"})
+	igloo-pete (teams/add-player-to-team pete igloo)
 
-		]))
+	]))
 	; (let [
 	; 	  ;rules
 	; 	  gandalf-challenge-rule-one (nn/create {:rule "$50 each to enter"})

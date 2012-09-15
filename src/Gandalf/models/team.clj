@@ -33,17 +33,16 @@
 	;(println team)
 	team))
 
-(defn get-team-member [team player-name]
-	)
+(defn get-team-member [team player-name])
 
 (defn get-team-members [team]
-	;(println team)
-		(let [ team-members (nn/traverse (:id (get-team team))
-												:relationships [{
-													:direction "in" 
-													:type "team-member"}] 
-												:return-filter {
-														:language "builtin" 
-														:name "all_but_start_node"})]
+		(let [ team-members 
+			(nn/traverse (:id (get-team team))
+			:relationships [{
+				:direction "in" 
+				:type "team-member"}] 
+			:return-filter {
+					:language "builtin" 
+					:name "all_but_start_node"})]
 		(println team-members)
-		(map players/create-player-data team-members)))
+		(map players/create-player-data-from-node team-members)))
