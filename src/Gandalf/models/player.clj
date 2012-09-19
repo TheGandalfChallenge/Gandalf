@@ -19,9 +19,13 @@
 		  :image (:image player) 
 		  :twitter-name (:twitter-name player)}))
 
-
-
 ;db
  (defn create-new-player [player]
  	(let [player-node (nn/create (create-player-data player))]
  		player-node))
+
+
+(defn get-player [player-id]
+	(println player-id)
+ 	(create-player-data-from-node  (nn/get player-id))
+)
