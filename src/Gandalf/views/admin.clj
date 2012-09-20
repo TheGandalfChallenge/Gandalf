@@ -15,29 +15,35 @@
             [:span (string/join "" errors)])
 
 (defpartial player-fields[{:keys [player-name image twitter-name]}]
-            (vali/on-error :player-name error-text)
-            (text-field {:placeholder "Player Name"} :player-name player-name)
-            (vali/on-error :image error-text)
-            (text-field {:placeholder "Image"} :image image)
-            (vali/on-error :twitter-name error-text)
-            (text-field {:placeholder "Twitter Name"} :twitter-name twitter-name)
+            [:ul
+              [:li (vali/on-error :player-name error-text)
+            "Player Name" (text-field {:placeholder "Player Name"} :player-name player-name)]
+             [:li(vali/on-error :image error-text)
+            "Player Image" (text-field {:placeholder "Image"} :image image)]
+            [:li(vali/on-error :twitter-name error-text)
+            "Player Twitter Name" (text-field {:placeholder "Twitter Name"} :twitter-name twitter-name)]]
   )
 
 (defpartial player-item [{:keys [image player-name twitter-name id] :as player}]
             [:li
              (link-to (str "admin/edit/" id) player-name)])
 
-(defpage "/team/:team/admin" {:keys [team]}
+(defpartial player-items [team]
   (common/admin-layout team
     [:ul.team-players
       (map player-item (teams/get-team-members team))
-    ]))
+    ])
+  )
+
+(defpage "/team/:team/admin" {:keys [team]}
+  (player-items team))
 
 (defpage "/team/:team/admin/edit/:player-id" {:keys [team player-id]}
   (common/admin-layout team
       (form-to [:post (str "/team/" team "/admin/edit/" player-id)]
-        (player-fields (players/get-player (Integer/parseInt player-id)) )
-        )
-    ))
+        (player-fields (players/get-player (Integer/parseInt player-id)))
+        (submit-button {:class "submit"} "Update Player"))))
 
-(defpage [:post "/team/:team/admin/edit/:player-id"] {:keys [team player-id]})
+(defpage [:post "/team/:team/admin/edit/:player-id"] {:keys [player-name image twitter-name team player-id] :as player}
+   (players/update-player player)
+   (resp/redirect (str "/team/" team "/admin")))
